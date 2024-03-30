@@ -32,7 +32,7 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 [//]: # (<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />)
-![](https://github.com/Rajeshtims/codepath_AND102_Unit5_BitFit_Part1/blob/main/Demo.gif
+![](https://github.com/Rajeshtims/codepath_AND102_Unit5_BitFit_Part1/blob/main/Demo.gif)
 
 
 <!-- Replace this with whatever GIF tool you used! -->
