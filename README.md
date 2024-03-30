@@ -2,7 +2,7 @@
 
 Submitted by: **Rajesh Timilsina**
 
-**Name of your app** is a health metrics app that allows users to track ... [TODO] 
+**BitFit Part 1** is a health metrics app that allows users to track `Sleep and Mood`
 
 Time spent: **10** hours spent in total
 
