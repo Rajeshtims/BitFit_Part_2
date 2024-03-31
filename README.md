@@ -2,7 +2,7 @@
 
 Submitted by: **Rajesh Timilsina**
 
-**Name of your app** is a health metrics app that allows users to track ... [TODO] 
+**BitFit Part 1** is a health metrics app that allows users to track `Sleep and Mood`
 
 Time spent: **10** hours spent in total
 
@@ -32,7 +32,7 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 [//]: # (<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />)
-![](https://github.com/Rajeshtims/codepath_Unit4Project_Flixter2/blob/main/Screencapture.gif)
+![](https://github.com/Rajeshtims/codepath_AND102_Unit5_BitFit_Part1/blob/main/Demo.gif)
 
 
 <!-- Replace this with whatever GIF tool you used! -->
