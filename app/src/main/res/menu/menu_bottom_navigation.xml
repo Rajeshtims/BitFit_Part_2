@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_entries"
+        android:enabled="true"
+        android:icon="@drawable/sharp_apps_24"
+        android:title="Entries" />
+
+
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/baseline_av_timer_24"
+        android:title="Dashboard" />
+
+<!--    <item-->
+<!--        android:id="@+id/action_schedules"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_access_time_white_24dp"-->
+<!--        android:title="@string/text_schedules"-->
+<!--        app:showAsAction="ifRoom" />-->
+
+</menu>

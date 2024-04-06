@@ -3,60 +3,47 @@ package com.rajesh.bitfitpart1
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.Dispatchers.IO
-
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var notesRecyclerView: RecyclerView
-    private val notes = mutableListOf<NoteDisplay>()
+//    private lateinit var notesRecyclerView: RecyclerView
+//    private val notes = mutableListOf<NoteDisplay>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "BitFit Part 1"
+        supportActionBar?.title = "BitFit Part 2"
 
-        notesRecyclerView = findViewById(R.id.recycler_view)
-        val noteDisplayAdapter = NoteDisplayAdapter(this, notes)
-        notesRecyclerView.adapter = noteDisplayAdapter
+        replaceFragment(EntriesFragment())
 
-        notesRecyclerView.layoutManager = LinearLayoutManager(this).also {
-            val dividerItemDecoration = DividerItemDecoration(this, it.orientation)
-            notesRecyclerView.addItemDecoration(dividerItemDecoration)
-        }
+        val entriesFragment = EntriesFragment()
+        val dashboardFragment = DashboardFragment()
 
 
-        lifecycleScope.launch (IO) {
-            (application as NoteApplication).db.articleDao().getAll().collect { databaseList ->
-                databaseList.map { entity ->
-                    NoteDisplay(
-                        entity.date,
-                        entity.sleepDuration,
-                        entity.mood,
-                        entity.notes
-                    )
-                }.also { mappedList ->
-//                    notesRecyclerView.adapter = NoteDisplayAdapter(this@MainActivity, mappedList)
-                    notes.addAll(mappedList)
-                    noteDisplayAdapter.notifyDataSetChanged()
-                }
+        // handle clicks on the bottom bar
+        val navBar: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        // set default selected item
+        navBar.selectedItemId = R.id.nav_entries
+
+        navBar.setOnItemSelectedListener { item ->
+            lateinit var fragment: Fragment
+            when (item.itemId) {
+                R.id.nav_entries -> fragment = entriesFragment
+                R.id.nav_dashboard -> fragment = dashboardFragment
             }
+            replaceFragment(fragment)
+            true
         }
+
 
         // ---------------  add onclick listener to the "ADD NEW ITEM" button
         val button = findViewById<Button>(R.id.button)
@@ -64,6 +51,21 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, InputActivity::class.java)
             this.startActivity(intent)
         }
-
     }
+
+
+//    override fun onResume() {
+//        super.onResume()
+//
+//    }
+
+    private fun replaceFragment(entriesFragment: Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.notes_frame_layout, entriesFragment)
+        fragmentTransaction.commit()
+    }
+
+
+
 }
